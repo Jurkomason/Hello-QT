@@ -9,5 +9,4 @@ install:
   - set QTDIR=C:C:\Qt\5.6\msvc2015_64
   
 build_script:
-  - qmake Giteye.pro
   - Nmake
