@@ -24,5 +24,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     ui->label->setText("Hola Mundo");
+    blabla
 
 }
