@@ -5,6 +5,7 @@ install:
   - cmd: mkdir build
   - cmd: mkdir source
   - cmd: choco install opencv
+  - cmd: choco install cmake
   - cmd: cd ..
   - set QTDIR=C:\Qt\5.6\mingw49_32
   - set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
