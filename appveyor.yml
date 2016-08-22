@@ -1,22 +1,45 @@
-environment:
-  MSBUILD_FLAGS: /verbosity:minimal /maxcpucount
-  matrix:
-  - CMAKE_GENERATOR: "Visual Studio 14 2015"
-    QT5: C:\Qt\5.6\msvc2015
-  - CMAKE_GENERATOR: "Visual Studio 14 2015 Win64"
-    QT5: C:\Qt\5.6\msvc2015_64
+version: '{branch}-{build}'
 
-matrix:
-  fast_finish: true
+init:
+  # Gather some basic build environment details.
+  - rem set
+  - dir "%ProgramFiles(x86)%\Microsoft Visual Studio *" /b /o
+  - dir "%ProgramFiles%\Microsoft SDKs\Windows" /b /o
+  - dir "%SystemDrive%\Qt\5.*" /b /o
+
+environment:
+  VSVER: 12.0 # Visual Studio 2013
+  matrix:
+    - QTDIR: C:\Qt\5.3\mingw482_32
+    - QTDIR: C:\Qt\5.3\msvc2013_64_opengl
+    - QTDIR: C:\Qt\5.3\msvc2013_opengl
+    - QTDIR: C:\Qt\5.4\mingw491_32
+    - QTDIR: C:\Qt\5.4\msvc2013_64_opengl
+    - QTDIR: C:\Qt\5.4\msvc2013_opengl
+    - QTDIR: C:\Qt\5.5\mingw492_32
+    - QTDIR: C:\Qt\5.5\msvc2013
+    - QTDIR: C:\Qt\5.5\msvc2013_64
+
+configuration:
+  - debug
+  - release
+
+install:
+  - '%QTDIR%\bin\qtenv2.bat'
+  - qmake -v
+  - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
+  - if %QTDIR:msvc=%==%QTDIR% g++ --version
+  - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
+  - if %QTDIR:msvc=%==%QTDIR% %make% --version
+  - if not %QTDIR:msvc=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%\VC\vcvarsall.bat" %ARCH%
+  - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
+  - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
 before_build:
-- set Path=%QT5%\bin;%Path%
-- cmake -H. -Bbuild -G "%CMAKE_GENERATOR%" -DCMAKE_SYSTEM_VERSION=10.0 "-DCMAKE_PREFIX_PATH=%QT5%" -DENABLE_GUI=ON
+  # Prepare the out-of-source build directory.
+  - mkdir %APPVEYOR_BUILD_FOLDER%-build
+  - cd %APPVEYOR_BUILD_FOLDER%-build
+  - qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
 build_script:
-- if "%APPVEYOR_REPO_TAG%"=="true" (set CONFIGURATION=RelWithDebInfo) else (set CONFIGURATION=Debug)
-- cmake --build build --config "%CONFIGURATION%" -- %MSBUILD_FLAGS%
-
-after_build:
-- cmake --build build --config "%CONFIGURATION%" --target check -- %MSBUILD_FLAGS%
-- cmake --build build --config "%CONFIGURATION%" --target package -- %MSBUILD_FLAGS%
+  - '%make%'
