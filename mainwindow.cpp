@@ -1,7 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <stdio.h>
+#include <vector>
 using namespace std;
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
