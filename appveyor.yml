@@ -38,11 +38,10 @@ before_build:
   - mkdir %APPVEYOR_BUILD_FOLDER%-build
   - cd %APPVEYOR_BUILD_FOLDER%-build
   - qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
-  - cmd: cd ..
-  - dir %APPVEYOR_BUILD_FOLDER%\out /b /o
+ 
 build_script:
   - '%make%'
-  #- dir /s /b
+  - dir /s /b
 artifacts:
-  - path: ..\%APPVEYOR_BUILD_FOLDER%-build\$(configuration)\Giteye.exe
-    name: Giteye.exe
+  - path: C:\Projects\hello-qt-build\$(configuration)\Giteye.exe
+    name: Giteye
