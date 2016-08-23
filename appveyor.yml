@@ -43,6 +43,5 @@ build_script:
   - '%make%'
   - echo %configuration%
 artifacts:
-  - path: $(configuration)
+  - path: $(configuration)\
     name: Giteye.exe
-    type: exe
