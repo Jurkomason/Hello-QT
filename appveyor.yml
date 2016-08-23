@@ -44,4 +44,4 @@ build_script:
   - echo %configuration%
 artifacts:
   - path: 'C:\projects\hello-qt-build\debug\Giteye.exe'
-    name Giteye.exe
+    name: Giteye.exe
