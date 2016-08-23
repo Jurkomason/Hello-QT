@@ -43,4 +43,4 @@ build_script:
   - '%make%'
 
 artifacts:
-  - path: Giteye.exe
+  - path: bin\$(configuration)\Giteye.exe
