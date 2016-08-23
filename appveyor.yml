@@ -44,12 +44,3 @@ before_build:
 
 build_script:
   - '%make%'
-after_build:
-  - mklink %APPVEYOR_BUILD_FOLDER%\qtaws.dll %APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\qtaws.dll
-
-test_script:
-  - if not %CONFIGURATION%==debug %make% check TESTARGS=-silent
-
-
-artifacts:
-  - path: qtaws.dll
