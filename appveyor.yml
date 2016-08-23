@@ -40,4 +40,4 @@ before_build:
   - qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
 build_script:
-  - nmake
+  - cmd: nmake
