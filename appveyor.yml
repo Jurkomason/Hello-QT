@@ -41,7 +41,6 @@ before_build:
 
 build_script:
   - '%make%'
-  - dir /S /b
-  
+  - echo %configuration
 artifacts:
-  - path: $(configuration)\Giteye.exe
+  - path: C:\projects\hello-qt-build\debug\Giteye.exe
