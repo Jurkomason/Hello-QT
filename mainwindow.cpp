@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <stdio.h>
 #include <vector>
+#include <iostream>
 using namespace std;
 
 
@@ -11,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    cout<<"Hola";
 
 
 
