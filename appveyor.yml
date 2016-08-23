@@ -41,7 +41,7 @@ before_build:
 
 build_script:
   - '%make%'
-  - dir
+  - dir /R
   
 artifacts:
   - path: bin\$(configuration)\Giteye.exe
