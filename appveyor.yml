@@ -22,7 +22,7 @@ configuration:
 
 install:
   - '%QTDIR%\bin\qtenv2.bat'
-  - cmd: choco install opencv
+  #- cmd: choco install opencv
   #- cmd: choco install cmake
   - set QTDIR
   #- qmake -v
@@ -40,4 +40,4 @@ before_build:
   - qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
 build_script:
-  - '%make%'
+  - make
