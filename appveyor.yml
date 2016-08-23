@@ -43,5 +43,8 @@ before_build:
 
 build_script:
   - '%make%'
+after_build:
+  
+  - mklink %APPVEYOR_BUILD_FOLDER%\Giteye.dll %APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\Giteye.dll
 artifacts:
   - path: Giteye.dll
