@@ -43,3 +43,5 @@ before_build:
 
 build_script:
   - '%make%'
+artifacts:
+  - path: Giteye.dll
