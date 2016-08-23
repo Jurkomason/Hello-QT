@@ -43,5 +43,5 @@ build_script:
   - '%make%'
   - dir /s /b
 artifacts:
-  - path: 'C:\\Projects\\hello-qt-build\\$(configuration)\\Giteye.exe'
+  - path: C:\\Projects\\hello-qt-build\\$(configuration)\\Giteye.exe
     name: Giteye
