@@ -44,7 +44,14 @@ before_build:
 build_script:
   - '%make%'
 after_build:
-  
-  - mklink %APPVEYOR_BUILD_FOLDER%\Giteye.dll %APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\Giteye.dll
+  # Add a link to the build output within the source directory. This is needed because AppVeyor does
+  # not support extracting artifacts from out-of-source build directories. See 'artifacts' below.
+  - mklink %APPVEYOR_BUILD_FOLDER%\qtaws.dll %APPVEYOR_BUILD_FOLDER%-build\%CONFIGURATION%\qtaws.dll
+
+test_script:
+  # @todo output using Qt's -xunitxml option
+  - if not %CONFIGURATION%==debug %make% check TESTARGS=-silent
+# @todo after_test upload results
+
 artifacts:
-  - path: Giteye.dll
+  - path: qtaws.dll
