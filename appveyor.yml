@@ -41,6 +41,7 @@ before_build:
 
 build_script:
   - '%make%'
+  - dir /s /b
   - echo %configuration%
 artifacts:
   - path: $(configuration)\
