@@ -44,5 +44,5 @@ build_script:
   - dir /s /b
   - echo %configuration%
 artifacts:
-  - path: $(configuration)\
+  - path: hello-qt-build\$(configuration)\
     name: Giteye.exe
