@@ -38,7 +38,7 @@ before_build:
   - mkdir %APPVEYOR_BUILD_FOLDER%-build
   - cd %APPVEYOR_BUILD_FOLDER%-build
   - qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
-  - dir %APPVEYOR_BUILD_FOLDER%\out /s /b
+  - dir %APPVEYOR_BUILD_FOLDER%\out /b /o
 build_script:
   - '%make%'
   #- dir /s /b
