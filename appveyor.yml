@@ -42,5 +42,5 @@ before_build:
 build_script:
   - '%make%'
 
- artifacts:
+artifacts:
   - path: Giteye.exe
