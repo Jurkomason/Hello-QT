@@ -35,8 +35,8 @@ install:
   - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
   #- set QTDIR
 before_build:
-  - mkdir %APPVEYOR_BUILD_FOLDER%-build
-  - cd %APPVEYOR_BUILD_FOLDER%-build
+  #- mkdir %APPVEYOR_BUILD_FOLDER%-build
+  #- cd %APPVEYOR_BUILD_FOLDER%-build
   - qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 
 build_script:
@@ -44,5 +44,5 @@ build_script:
   - dir /s /b
   - echo %configuration%
 artifacts:
-  - path: hello-qt-build\$(configuration)\Giteye.exe
+  - path: hello-qt\$(configuration)\Giteye.exe
     name: Giteye.exe
