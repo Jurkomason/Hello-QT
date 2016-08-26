@@ -19,7 +19,7 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
-INCLUDEPATH += C:\\opencv310\\opencv\\opencv_bin\\install\\include
+INCLUDEPATH += C:\\tools\\opencv\\bin\\install\\include
 
 
 
