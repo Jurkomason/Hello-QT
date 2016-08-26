@@ -9,6 +9,8 @@ init:
 
 environment:
   VSVER: 14.0 # Visual Studio 2015
+  OPENCV_DIR: C:\tools\opencv
+  PATH %PATH$:C:\tools\opencv\bin
   matrix:
     #- QTDIR: C:\Qt\5.3\mingw482_32
     #- QTDIR: C:\Qt\5.4\mingw491_32
@@ -33,6 +35,7 @@ install:
   - if not %QTDIR:msvc=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%\VC\vcvarsall.bat" %ARCH%
   - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
   - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
+
   #- set QTDIR
 before_build:
   #- mkdir %APPVEYOR_BUILD_FOLDER%-build
