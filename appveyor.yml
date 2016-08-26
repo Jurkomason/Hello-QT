@@ -10,7 +10,7 @@ init:
 environment:
   VSVER: 14.0 # Visual Studio 2015
   OPENCV_DIR: C:\tools\opencv
-  PATH: %PATH$:C:\tools\opencv\bin
+  PATH %PATH$: C:\tools\opencv\bin
   matrix:
     #- QTDIR: C:\Qt\5.3\mingw482_32
     #- QTDIR: C:\Qt\5.4\mingw491_32
