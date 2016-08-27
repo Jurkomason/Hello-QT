@@ -45,7 +45,7 @@ build_script:
   - cmd: set OPENCV_DIR=C:\tools\opencv
   - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
-  - dir c:\tools\ /s /b
+  #- dir c:\tools\ /s /b
   - '%make%'
   
   #- dir %APPVEYOR_BUILD_FOLDER%\out
