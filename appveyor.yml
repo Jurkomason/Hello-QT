@@ -48,7 +48,7 @@ before_build:
 
   - cmd: cmake -G "Visual Studio 14 Win64" -DOpenCV_DIR=C:\tools\opencv\build %APPVEYOR_BUILD_FOLDER% C:\projects\hello-qt
 build:
-  project: %APPVEYOR_BUILD_FOLDER%\testproject.sln  
+  project: c:\projects\hello-qt\testproject.sln  
   
 build_script:
   
