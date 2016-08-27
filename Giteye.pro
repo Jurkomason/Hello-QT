@@ -25,7 +25,7 @@ INCLUDEPATH += C:\\tools\\opencv\\build\\include
 
 
 release{
-LIBS += -LC:\\tools\\opencv\\build\\x64\\vc14\\bin
+LIBS += -LC:\\tools\\opencv\\build\\x64\\vc14\\bin\
      opencv_ffmpeg310_64\
      opencv_world310\
 }
