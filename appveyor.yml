@@ -45,9 +45,9 @@ build_script:
   - cmd: set OPENCV_DIR=C:\tools\opencv
   - cmd: set PATH=C:\tools\opencv\bin:%PATH%
 
-
-  - '%make%'
   - dir c:\tools\ /s /b
+  - '%make%'
+  
   #- dir %APPVEYOR_BUILD_FOLDER%\out
 artifacts:
 #- path: ..\hello-qt-build\$(configuration)\Giteye.exe
