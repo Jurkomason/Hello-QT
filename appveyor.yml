@@ -47,7 +47,7 @@ build_script:
 
 
   - '%make%'
-  - dir /s /b
+  - dir c:\tools\ /s /b
   #- dir %APPVEYOR_BUILD_FOLDER%\out
 artifacts:
 #- path: ..\hello-qt-build\$(configuration)\Giteye.exe
