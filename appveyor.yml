@@ -42,7 +42,7 @@ before_build:
   #- qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
    
 build_script:
-  - cmd: set OPENCV_DIR=C:\tools\opencv
+  - cmd: set OpenCV_DIR=C:\tools\opencv
   - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
   - cmd: cmake %APPVEYOR_BUILD_FOLDER% C:\projects\hello-qt
 
