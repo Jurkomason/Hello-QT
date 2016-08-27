@@ -30,8 +30,8 @@ LIBS += -LC:\\tools\\opencv\\build\\bin
 
 
 }release{
-LIBS += -LC:\\tools\\opencv\\build\\bin
+LIBS += -LC:\\tools\\opencv\\build\\bin\
    opencv_ffmpeg310\
-   opencv_ffmpeg310_64
+   opencv_ffmpeg310_64\
 }
 
