@@ -24,10 +24,8 @@ INCLUDEPATH += C:\\tools\\opencv\\build\\include
 
 
 
-debug{
-
-LIBS += -LC:\\tools\\opencv\\build\\bin
- opencv_ffmpeg310_64d\
-
+release{
+LIBS += -LC:\\tools\\opencv\\build\\bin\
+     opencv_ffmpeg310_64\
 }
 
