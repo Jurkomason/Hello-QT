@@ -1,5 +1,7 @@
 version: '{branch}-{build}'
 
+os: Visual Studio 2015
+
 init:
   # Gather some basic build environment details.
   #- rem set
@@ -8,7 +10,7 @@ init:
   #- dir "%SystemDrive%\Qt\5.*" /b /o
 
 environment:
-  VSVER: 14.0 # Visual Studio 2015
+  #VSVER: 14.0 # Visual Studio 2015
   matrix:
     #- QTDIR: C:\Qt\5.3\mingw482_32
     #- QTDIR: C:\Qt\5.4\mingw491_32
@@ -40,12 +42,17 @@ before_build:
   #- cd %APPVEYOR_BUILD_FOLDER%-build
   #- cd %APPVEYOR_BUILD_FOLDER% 
   #- qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
-   
+#  - cmd: set OpenCV_DIR=C:\tools\opencv\build\x64\vc12\lib
+#  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
+
+
+  - cmd: cmake -G "Visual Studio 14 Win64" -DOpenCV_DIR=C:\tools\opencv\build %APPVEYOR_BUILD_FOLDER% C:\projects\hello-qt
+build:
+  project: %APPVEYOR_BUILD_FOLDER%\testproject.sln  
+  
 build_script:
-  - cmd: set OpenCV_DIR=C:\tools\opencv\build\x64\vc12\lib
-  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
-  - cmd: cmake %APPVEYOR_BUILD_FOLDER% C:\projects\hello-qt
-  - cmd: nmake
+  
+  #- cmd: nmake
 
   #- dir c:\tools\ /s /b
   #- '%make%'
