@@ -22,7 +22,7 @@ FORMS    += mainwindow.ui
 INCLUDEPATH += C:\\tools\\opencv\\build\\include
 
 release{
-LIBS += -LC:\\tools\\opencv\\build\\x64\\vc14\\lib\
+LIBS += -LC:\\tools\\opencv\\build\\x64\\vc14\\bin\
     opencv_world310\
 }
 
