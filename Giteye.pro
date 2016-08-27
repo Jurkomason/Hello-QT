@@ -26,25 +26,12 @@ INCLUDEPATH += C:\\tools\\opencv\\build\\include
 
 debug{
 
-LIBS += -LC:\\opencv310\\opencv\\opencv_bin\\bin\
-    libopencv_calib3d310d\
-    libopencv_core310\
-    libopencv_core310d\
-    libopencv_features2d310d\
-    libopencv_flann310d\
-    libopencv_imgcodecs310\
-    libopencv_imgproc310\
-    libopencv_imgcodecs310d\
-    libopencv_imgproc310d\
-    libopencv_ml310d\
-    libopencv_objdetect310d\
-    libopencv_highgui310d\
-    libopencv_photo310d\
-    libopencv_stitching310d\
+LIBS += -LC:\\tools\\opencv\\build\\bin
+
+
 }release{
-LIBS += -LC:\\opencv310\\opencv\\opencv_bin\\bin\
-    libopencv_core310\
-    libopencv_imgcodecs310\
-    libopencv_imgproc310\
+LIBS += -LC:\\tools\\opencv\\build\\bin
+   opencv_ffmpeg310\
+   opencv_ffmpeg310_64\
 }
 
