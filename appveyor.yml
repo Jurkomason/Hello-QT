@@ -21,30 +21,31 @@ configuration:
   - release
 
 install:
-  - '%QTDIR%\bin\qtenv2.bat'
+  #- '%QTDIR%\bin\qtenv2.bat'
   - cmd: choco install opencv
   #- cmd: choco install cmake
   - set QTDIR
   #- qmake -v
-  - if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
-  - if %QTDIR:msvc=%==%QTDIR% g++ --version
-  - if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
-  - if %QTDIR:msvc=%==%QTDIR% %make% --version
-  - if not %QTDIR:msvc=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%\VC\vcvarsall.bat" %ARCH%
-  - if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
-  - if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
+  #- if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
+  #- if %QTDIR:msvc=%==%QTDIR% g++ --version
+  #- if %QTDIR:msvc=%==%QTDIR% set make=mingw32-make.exe
+  #- if %QTDIR:msvc=%==%QTDIR% %make% --version
+  #- if not %QTDIR:msvc=%==%QTDIR% call "%ProgramFiles(x86)%\Microsoft Visual Studio %VSVER%\VC\vcvarsall.bat" %ARCH%
+  #- if not %QTDIR:msvc=%==%QTDIR% set make=nmake.exe
+  #- if not %QTDIR:msvc=%==%QTDIR% %make% /? > nul
 
   #- set QTDIR
 before_build:
   #- mkdir %APPVEYOR_BUILD_FOLDER%-build
   #- cd %APPVEYOR_BUILD_FOLDER%-build
-  - cd %APPVEYOR_BUILD_FOLDER% 
+  #- cd %APPVEYOR_BUILD_FOLDER% 
   #- qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
    
 build_script:
   - cmd: set OpenCV_DIR=C:\tools\opencv\build\x64\vc12\lib
   - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
   - cmd: cmake %APPVEYOR_BUILD_FOLDER% C:\projects\hello-qt
+  - cmd: nmake
 
   #- dir c:\tools\ /s /b
   #- '%make%'
