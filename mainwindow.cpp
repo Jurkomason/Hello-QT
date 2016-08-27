@@ -6,6 +6,8 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+//#include "itkImage.h"
+  
 
 using namespace std;
 using namespace cv;
@@ -20,8 +22,13 @@ MainWindow::MainWindow(QWidget *parent) :
     cout<<"Hola";
    Mat hola= imread("c/:hola");
    imwrite("hola.jpg",hola);
-
-
+   /*
+    typedef itk::Image< unsigned short, 3 > ImageType;
+   
+    ImageType::Pointer image = ImageType::New();
+  
+    std::cout << "ITK Hello World !" << std::endl;
+	*/
 
 }
 
