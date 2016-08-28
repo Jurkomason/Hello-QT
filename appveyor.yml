@@ -44,7 +44,7 @@ before_build:
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
   - mkdir build
-  - cmake . build
+  - cmake build c:\projects\hello-qt
 #build_script:
 #  - cmake --build build
 
