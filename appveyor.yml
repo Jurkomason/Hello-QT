@@ -45,6 +45,10 @@ before_build:
 
   - mkdir build
   - cmake -G "Visual Studio 14 2015 Win64" build c:\projects\hello-qt
+
+build:
+  parallel: true                  # enable MSBuild parallel builds
+  project: build/testproject.sln  
 #build_script:
 #  - cmake --build build
 
