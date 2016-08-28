@@ -24,6 +24,7 @@ configuration:
 install:
   - '%QTDIR%\bin\qtenv2.bat'
   - cmd: choco install opencv
+  - call "%ProgramFiles(x86)%\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %PLATFORM%
   #- cmd: choco install cmake
   #- qmake -v
   #- if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
@@ -44,8 +45,7 @@ before_build:
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
   - mkdir build
-  - cd build
-  - cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt .
+  - cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt c:\projects\hello-qt\build
 
 build:
   parallel: true                  # enable MSBuild parallel builds
