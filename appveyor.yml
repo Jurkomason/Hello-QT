@@ -43,8 +43,9 @@ before_build:
 
   - mkdir build
   - cmake C:\projects\hello-qt build
-build:
+build_script:
   - cmake --build build
+
   
 artifacts:
   - path: $(configuration)\Giteye.exe
