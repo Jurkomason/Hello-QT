@@ -22,7 +22,7 @@ configuration:
   - release
 
 install:
-  #- '%QTDIR%\bin\qtenv2.bat'
+  - '%QTDIR%\bin\qtenv2.bat'
   - cmd: choco install opencv
   #- cmd: choco install cmake
   #- qmake -v
@@ -44,7 +44,7 @@ before_build:
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
   - mkdir build
-  - cmake c:\projects\hello-qt build
+  - cmake build c:\projects\hello-qt
 #build_script:
 #  - cmake --build build
 
