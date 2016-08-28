@@ -6,6 +6,7 @@ init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 environment:
+  OpenCV_DIR: C:\tools\opencv\build
   #VSVER: 14.0 # Visual Studio 2015
   matrix:
     #- QTDIR: C:\Qt\5.3\mingw482_32
@@ -22,7 +23,6 @@ install:
   #- '%QTDIR%\bin\qtenv2.bat'
   - cmd: choco install opencv
   #- cmd: choco install cmake
-  - set QTDIR
   #- qmake -v
   #- if %QTDIR:_64=%==%QTDIR% ( set ARCH=x86 ) else set ARCH=x64
   #- if %QTDIR:msvc=%==%QTDIR% g++ --version
@@ -41,19 +41,11 @@ before_build:
 #  - cmd: set OpenCV_DIR=C:\tools\opencv\build\x64\vc12\lib
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
-
-  - cmd: cmake -G "Visual Studio 14 Win64" -DOpenCV_DIR=C:\tools\opencv\build %APPVEYOR_BUILD_FOLDER% C:\projects\hello-qt
+  - mkdir build
+  - cmake C:\projects\hello-qt build
 build:
-  project: c:\projects\hello-qt\testproject.sln  
+  - cmake --build build
   
-build_script:
-  
-  #- cmd: nmake
-
-  #- dir c:\tools\ /s /b
-  #- '%make%'
-  
-  #- dir %APPVEYOR_BUILD_FOLDER%\out
 artifacts:
   - path: $(configuration)\Giteye.exe
     name: Giteye
