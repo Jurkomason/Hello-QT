@@ -45,7 +45,7 @@ before_build:
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
   - mkdir build
-  - cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt c:\projects\hello-qt\build
+  - cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt\build c:\projects\hello-qt
 
 build:
   parallel: true                  # enable MSBuild parallel builds
