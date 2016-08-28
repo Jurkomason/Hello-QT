@@ -3,11 +3,7 @@ version: '{branch}-{build}'
 os: Visual Studio 2015
 
 init:
-  # Gather some basic build environment details.
-  #- rem set
-  #- dir "%ProgramFiles(x86)%\Microsoft Visual Studio *" /b /o
-  #- dir "%ProgramFiles%\Microsoft SDKs\Windows" /b /o
-  #- dir "%SystemDrive%\Qt\5.*" /b /o
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 environment:
   #VSVER: 14.0 # Visual Studio 2015
@@ -59,6 +55,8 @@ build_script:
   
   #- dir %APPVEYOR_BUILD_FOLDER%\out
 artifacts:
-#- path: ..\hello-qt-build\$(configuration)\Giteye.exe
   - path: $(configuration)\Giteye.exe
     name: Giteye
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
