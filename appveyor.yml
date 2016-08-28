@@ -44,7 +44,7 @@ before_build:
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
   - mkdir build
-  - cmake build c:\projects\hello-qt
+  - cmake -G "Visual Studio 14 2015 Win64" build c:\projects\hello-qt
 #build_script:
 #  - cmake --build build
 
