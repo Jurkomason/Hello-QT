@@ -49,8 +49,8 @@ before_build:
   #- cmd: dir .
 
 build_script:
-  - cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt %APPVEYOR_BUILD_FOLDER%-build
-  - cmake --build %APPVEYOR_BUILD_FOLDER%-build
+  - cmake -G "Visual Studio 14 2015 Win64" c:/projects/hello-qt-build c:/projects/hello-qt
+  - cmake --build c:/projects/hello-qt-build
 
 artifacts:
   - path: $(configuration)\Giteye.exe
