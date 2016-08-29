@@ -2,8 +2,8 @@ version: '{branch}-{build}'
 
 os: Visual Studio 2015
 
-init:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#init:
+#  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 environment:
   OpenCV_DIR: C:\tools\opencv\build
@@ -37,27 +37,24 @@ install:
 
   #- set QTDIR
 before_build:
-  #- mkdir %APPVEYOR_BUILD_FOLDER%-build
+  - mkdir %APPVEYOR_BUILD_FOLDER%-build
   #- cd %APPVEYOR_BUILD_FOLDER%-build
   #- cd %APPVEYOR_BUILD_FOLDER% 
   #- qmake -Wall -Wlogic -Wparser CONFIG+=%CONFIGURATION% %APPVEYOR_BUILD_FOLDER%
 #  - cmd: set OpenCV_DIR=C:\tools\opencv\build\x64\vc12\lib
 #  - cmd: set PATH=C:\tools\opencv\build\bin:%PATH%
 
-  - cmd: mkdir build
-  - cmd: cd c:\projects\hello-qt\build
-  - cmd: dir .
-  - cmd: cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt build
+  #- cmd: mkdir build
+  #- cmd: cd c:\projects\hello-qt\build
+  #- cmd: dir .
 
-build:
-  parallel: true                  # enable MSBuild parallel builds
-  project: build/testproject.sln  
-#build_script:
-#  - cmake --build build
+build_script:
+  - cmd: cmake -G "Visual Studio 14 2015 Win64" c:\projects\hello-qt %APPVEYOR_BUILD_FOLDER%-build
+  - cmake --build %APPVEYOR_BUILD_FOLDER%-build
 
 artifacts:
   - path: $(configuration)\Giteye.exe
     name: Giteye
 
-on_finish:
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+#on_finish:
+#  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
